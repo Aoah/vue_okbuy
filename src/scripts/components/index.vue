@@ -1,7 +1,7 @@
 <template>
     <div class="containter">
       <div class="index-containter">
-        <router-view>
+        <router-view  :transition=" this.flag ? 'gotoLeft' : 'gotoRight'"  transition-mode="out-in">
         </router-view>
       </div>
       <footer id="footer">
@@ -16,10 +16,14 @@
 </template>
 
  <script>
+   import { changeIndex } from "../vuex/actions";
+   import { getIndex  } from "../vuex/getters"
+
       export default{
           data(){
                return{
-                        current:0,
+
+                        flag:true,
                         list:[
                           {path:'/',icon:"&#xe6b8;",name:"首页"},
                           {path:"/list",icon:"&#xe6fe;",name:"分类"},
@@ -29,10 +33,24 @@
                         ]
                }
           },
+          vuex:{
+             actions:{
+                 change:changeIndex
+             },
+             getters:{
+                  current:getIndex
+             }
+          },
           methods:{
               changePage(index){
-                this.current=index
+                if(index>this.current){
+                   this.flag=true;
+                }else{
+                    this.flag=false;
+                }
+                this.change(index)
+              
               }
           }
       }
-  </script> 
+  </script>

@@ -10,7 +10,7 @@
                 </li>
             </ul>
         </div>
-        <div class="list-main">
+        <div class="list-main" v-srcoll="scrollR">
           <div>
             <div class="listmainTopO">
                 <ul class="listmain-top">
@@ -39,28 +39,26 @@
 
 
 <script>
-    let Vue = require("../libs/vue.js");
-    let VueResource = require("../libs/vue-resource.js");
 
     let myScroll = null;
     let myScroll2 = null;
     let myScroll3 = null;
     //  var VueRouter = require('../libs/vue-router.js')
-
     //import VueRouter from "../libs/vue-router.js"
-
     // Vue.use(VueRouter);
     //let router = new VueRouter();
-
-
-    Vue.use(VueResource);
+    // Vue.use(VueResource);
     // Vue.use(router);
-
     //router.go({name:'contain',params:{userId:1}})
+
+    //配置vuex中的action 点击事件
+    import {changeIndex } from "../vuex/actions"
+ import imageLoad from "../utils/commonUtil";
 
     export default {
         data() {
             return {
+              scrollR:'.list-main',
                 list1: [
                     "运动生活",
                     "户外鞋服",
@@ -78,18 +76,27 @@
 
             }
         },
+        vuex:{
+            actions:{
+               change:changeIndex
+            }
+        },
         ready() {
+          var _this=this;
+          Vue.nextTick(function(){
+                _this.scrollR=".list-main";
+          })
             //scroll 滚动
-            // myScroll = new IScroll(".list-left", {
-            //         mouseWheel: true,
-            //         scrollbars: false,
-            //         probeType: 1
-            //     })
-                /* myScroll2=new IScroll(".listmain-top",{
-                mouseWheel:true,
-                scrollbars:false,
-                probeType:1
-           })*/
+             myScroll = new IScroll(".list-left", {
+                    mouseWheel: true,
+                    scrollbars: false,
+                    probeType: 1
+                })
+          //     myScroll2=new IScroll(".listmain-top",{
+          //       mouseWheel:true,
+          //       scrollbars:false,
+          //       probeType:1
+          //  })
 
             /*myScroll2=new IScroll(".listmain-top",{
          	 	 mouseWheel:true,
@@ -97,14 +104,24 @@
                 probeType:1
 
          	 })*/
-             myScroll3 = new IScroll(".list-main",{
-                   mouseWheel:true,
-                   scrollbars:true,
-                   probeType:1
-             })
+           imageLoad.isAllLoaded(".list-main",function(){
+                 new IScroll(".list-main",{
+                         mouseWheel: true,
+                         scrollbars: false,
+                         probeType: 1,
+                         click:true
+                 })
+           })
+              this.change(1);  //vue中的actions的配置
 
+            //  myScroll3 = new IScroll(".list-main",{
+            //          mouseWheel: true,
+            //          scrollbars: false,
+            //          probeType: 1,
+            //          click:true
+            //  })
             var that = this;
-            that.$http.get("/mock/list2.json")
+            that.$http.get("/rest/list2")
                 .then((res) => {
 
                     that.list2 = res.data.data;
@@ -113,7 +130,7 @@
                     // error callback
                     console.log("error");
                 });
-            that.$http.get("/mock/list3.json")
+            that.$http.get("/rest/list3")
                 .then((res) => {
                     console.log(res.data);
                     that.list3 = res.data.data;

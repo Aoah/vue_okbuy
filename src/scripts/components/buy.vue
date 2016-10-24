@@ -41,6 +41,7 @@
 
 <script>
 //  var myswiperbuy=null;
+import {changeIndex } from "../vuex/actions"
     export default {
         data() {
             return {
@@ -48,13 +49,19 @@
               buylist2:[]
             }
         },
+        vuex:{
+             actions:{
+                 change: changeIndex
+             }
+        },
         ready() {
+            this.change(2);
             var that = this;
             let myswiperbuy= new Swiper('.swiper-container',{
                loop:true,
                autoplay: 3000
              })
-            that.$http.get("/mock/list4.json")
+            that.$http.get("/rest/list4")
                 .then (
                     (res) => {
                         console.log(res.data.data);

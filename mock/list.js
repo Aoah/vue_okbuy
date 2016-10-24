@@ -1,4 +1,4 @@
-{
+module.exports={
     "data": [{
         "img": "./images/img1.jpg",
         "title": "小丸子1"

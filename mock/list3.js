@@ -1,4 +1,4 @@
-{
+module.exports= {
     "data":[{
                 "title": "运动鞋",
                 "more": [{

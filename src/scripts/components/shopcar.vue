@@ -49,7 +49,7 @@
 
 
 <script>
-
+  import {changeIndex} from "../vuex/actions";
     export default {
          data(){
              return{
@@ -63,9 +63,15 @@
                shoplist1:[]
              }
          },
+         vuex:{
+            actions:{
+                change:changeIndex
+            }
+         },
          ready(){
+           this.change(3);
            var that=this;
-           that.$http.get("/mock/list5.json")
+           that.$http.get("/rest/list5")
                 .then(
                    (res)=>{
                      console.log(res.data.data);

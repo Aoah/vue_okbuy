@@ -16,19 +16,29 @@ import buyHeader from "./components/buyHeader.vue"
 
 import shopcarHeader from "./components/shopcarHeader.vue"
 
+//  自定义指令
+/*******/  import imageLoad from "./utils/commonUtil";
+/*******/   imageLoad.mySwiper();
+            imageLoad.myScroll();
+
 //import sss from "./components/listTest.vue"
 // import  listcontain  from "./components/listContain.vue";
 // 引入单独定义的路由
-// import Router from "./router"
+// import Router from "./router"]
+
+// 引入创建的store
+import store from "./vuex/store"
 
 // 引入vue 的相关路由文件
- import Vue from "./libs/vue.js";
- import VueRouter from "./libs/vue-router.js"
+ // import Vue from "./libs/vue.js";
+ // import VueRouter from "./libs/vue-router.js"
 
-  Vue.use(VueRouter);
+  // Vue.use(VueRouter);
  let router = new VueRouter();
 
-  let App =Vue.extend({});
+  let App =Vue.extend({
+      store:store
+  });
 
  router.map({
       "/":{

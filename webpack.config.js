@@ -18,7 +18,17 @@ module.exports={
    devServer:{
 	   	contentBase:__dirname+'/prd',
 	   	port:80,
-	   	inline:true
+	   	inline:true,
+      proxy:{
+           '/rest/*':{
+               target:'http://localhost:3000',
+               secure:false,
+               pathRewrite:{
+                   '^/rest':''
+               }        //后端接口没有设置好
+                        //rest/list  ->http://localhost:8888/list
+           }
+      }
    },
    //模块配置
    module:{

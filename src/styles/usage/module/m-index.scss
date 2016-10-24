@@ -10,3 +10,22 @@
      }
      @extend %footer;
 }
+.gotoLeft-transition{
+     transition:all .3s ease;
+}
+.gotoLeft-enter{
+      @include transform(translate(0,0));
+}
+.gotoLeft-leave{
+      @include transform(translate(-100%,0));
+}
+
+ .gotoRight-transition{
+       transition: all .3s ease;
+ }
+ .gotoRight-enter{
+       @include transform(translate(0,0));
+ }
+ .gotoRight-leave{
+        @include transform(translate(100%,0));
+ }
