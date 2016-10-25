@@ -32,11 +32,12 @@
             .listmainTopO {
                 overflow: hidden;
                 .listmain-top {
-                    overflow-x: scroll;
+
+                  display: inline-block;
+                    overflow-x:scroll;
                     white-space: nowrap;
                     height: .72rem;
-                    @include flex-direction(row);
-                    @include align-items(center);
+
                     li {
                         display: inline-block;
                         @include border(.01rem, #d7d7d7, solid);

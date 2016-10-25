@@ -4,3 +4,20 @@
 /**
  * yo-dialog扩展
  */
+
+
+   // $name 定义另一个类
+   //{
+  //      对类的扩展
+  //           }
+@include yo-dialog(
+   $radius:40px
+    //  $name:a
+){
+       position: absolute;
+       left:50%;
+       top:50%;
+       @include transform(translate(-50%,-50%));
+
+
+}

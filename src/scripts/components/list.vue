@@ -11,13 +11,13 @@
             </ul>
         </div>
         <div class="list-main" v-srcoll="scrollR">
-          <div>
+          <div >
             <div class="listmainTopO">
-                <ul class="listmain-top">
-                    <li v-for="item in list2">
-                        <img v-bind:src="item.src" />
-                        <p>{{item.dec}}</p>
-                    </li>
+                <ul class="listmain-top" @click="tet">
+                      <li v-for="item in list2">
+                          <img v-bind:src="item.src" />
+                          <p>{{item.dec}}</p>
+                      </li>
                 </ul>
             </div>
             <div class="listmainCon">
@@ -53,8 +53,8 @@
 
     //配置vuex中的action 点击事件
     import {changeIndex } from "../vuex/actions"
- import imageLoad from "../utils/commonUtil";
-
+    import imageLoad from "../utils/commonUtil";
+  var scroll;
     export default {
         data() {
             return {
@@ -76,10 +76,35 @@
 
             }
         },
+        methods:{
+            tet(){
+              console.log("dddd");
+             }
+        },
         vuex:{
             actions:{
                change:changeIndex
             }
+        },
+        created () {
+          var that = this;
+          that.$http.get("/rest/list2")
+              .then((res) => {
+
+                  that.list2 = res.data.data;
+
+              }, (response) => {
+                  // error callback
+                  console.log("error");
+              });
+          that.$http.get("/rest/list3")
+              .then((res) => {
+                  console.log(res.data);
+                  that.list3 = res.data.data;
+                  console.log(this.list3);
+              }), (response) => {
+                  console.log("error");
+              }
         },
         ready() {
           var _this=this;
@@ -92,25 +117,26 @@
                     scrollbars: false,
                     probeType: 1
                 })
-          //     myScroll2=new IScroll(".listmain-top",{
-          //       mouseWheel:true,
-          //       scrollbars:false,
-          //       probeType:1
-          //  })
-
-            /*myScroll2=new IScroll(".listmain-top",{
-         	 	 mouseWheel:true,
-                scrollbars:false,
-                probeType:1
-
-         	 })*/
+             myScroll2 = new IScroll(".listmainTopO",{
+                      eventPassthrough:true,
+                      scrollX:true,
+                      scrollY:false,
+                      preventDefault:false,
+                      mouseWheel: true,
+                      scrollbars: false,
+                      probeType: 1,
+                      click:true
+             })
+             myScroll3 = new IScroll(".list-main",{
+                       mouseWheel: true,
+                       scrollbars: false,
+                       probeType: 1,
+                       click:true
+               })
            imageLoad.isAllLoaded(".list-main",function(){
-                 new IScroll(".list-main",{
-                         mouseWheel: true,
-                         scrollbars: false,
-                         probeType: 1,
-                         click:true
-                 })
+                   // console.log("dddd");
+                   myScroll2.refresh();
+                   myScroll3.refresh();
            })
               this.change(1);  //vue中的actions的配置
 
@@ -120,23 +146,7 @@
             //          probeType: 1,
             //          click:true
             //  })
-            var that = this;
-            that.$http.get("/rest/list2")
-                .then((res) => {
 
-                    that.list2 = res.data.data;
-
-                }, (response) => {
-                    // error callback
-                    console.log("error");
-                });
-            that.$http.get("/rest/list3")
-                .then((res) => {
-                    console.log(res.data);
-                    that.list3 = res.data.data;
-                }), (response) => {
-                    console.log("error");
-                }
 
 
         }

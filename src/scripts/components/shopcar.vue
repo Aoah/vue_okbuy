@@ -39,7 +39,6 @@
           </div>
           <div>
             去结算({{total.}})
-
           </div>
 
        </div>

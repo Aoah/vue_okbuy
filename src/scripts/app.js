@@ -36,6 +36,7 @@ import store from "./vuex/store"
   // Vue.use(VueRouter);
  let router = new VueRouter();
 
+//根组件中注册路由
   let App =Vue.extend({
       store:store
   });

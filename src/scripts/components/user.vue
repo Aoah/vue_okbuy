@@ -1,7 +1,17 @@
 
 
 <template>
-   <div class="user-containter">
+    <!-- <div v-loading ="isLoading" :loading-options="{options}"></div>
+     <button @click="isLoading = true">
+     </button>
+     <!-- <div class="block" v-loading="loading.a">
+                <p>v-loading="loading"</p>
+                <a class="button blue" href="javascript:;" @click="showLoading('a')">Loading this block</a>
+            </div> -->
+   <my-component>
+   </my-component>
+
+   <!-- <div class="user-containter">
    <div class="form">
        <div class="userId">
            <label>{{inputContent.laberT}} </label>
@@ -50,17 +60,27 @@
           <img src="/images/sina.png"/>
    </div>
 
-   </div>
+   </div> -->
 
 </template>
 
 <script>
+      // 引入vuex 的action 事件
      import {changeIndex} from "../vuex/actions"
 
+        // 引入  自定义的loading 插件
+      // import loading from "../plugins/vue-loading/index.js";
+      // Vue.use(loading);
+
+    // 引入自定义的对话框组件
+      import vuedialog from "../plugins/vue-dialog.js";
+       Vue.use(vuedialog);
+
      export default {
+      
           data(){
             return {
-              
+               isLoading:false
             }
 
           },
