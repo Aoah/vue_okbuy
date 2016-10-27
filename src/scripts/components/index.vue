@@ -25,11 +25,11 @@
 
                         flag:true,
                         list:[
-                          {path:'/',icon:"&#xe6b8;",name:"首页"},
-                          {path:"/list",icon:"&#xe6fe;",name:"分类"},
-                         {path:"/buy",icon:"&#xe6b2;",name:"限时特卖"},
-                         {path:"/shopcar",icon:"&#xe6af;",name:"购物车"},
-                         {path:"/user",icon:"&#xe78b;",name:"用户"}
+                          {path:'/index/',icon:"&#xe6b8;",name:"首页"},
+                          {path:"/index/list",icon:"&#xe6fe;",name:"分类"},
+                         {path:"/index/buy",icon:"&#xe6b2;",name:"限时特卖"},
+                         {path:"/index/shopcar",icon:"&#xe6af;",name:"购物车"},
+                         {path:"/index/user",icon:"&#xe78b;",name:"用户"}
                         ]
                }
           },
@@ -49,7 +49,7 @@
                     this.flag=false;
                 }
                 this.change(index)
-              
+
               }
           }
       }

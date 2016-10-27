@@ -7,6 +7,8 @@ import list from "./components/list.vue";
 import buy from "./components/buy.vue";
 import shopcar from "./components/shopcar.vue";
 import user from "./components/user.vue";
+import guide from "./components/guide.vue";
+
 
 import mainHeader from "./components/mainHeader.vue"
 
@@ -42,7 +44,12 @@ import store from "./vuex/store"
   });
 
  router.map({
-      "/":{
+        "/":{
+           name:"guide",
+           component:guide
+         },
+        "/index":{
+            name:"index",
             component: index,
             subRoutes:{
                  "/":{
@@ -86,7 +93,7 @@ import store from "./vuex/store"
                          component:user
                    }
             }
-       }
+     }
 })
 
   // var index=Vue.extend({
