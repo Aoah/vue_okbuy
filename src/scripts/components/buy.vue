@@ -19,7 +19,7 @@
             </div>
             <div class="swiper-container"  id="swiperbuy">
               <div class="swiper-wrapper">
-                    <div class="swiper-slide" v-for="items in buylist2">
+                    <div style="height:100%" class="swiper-slide" v-for="items in buylist2">
                           <ul >
                             <li v-for="item in items.test1">
                                <img v-bind:src="item.src"/>

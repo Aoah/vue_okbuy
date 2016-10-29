@@ -54,6 +54,9 @@
 						 background:url("/images/bg1.png") repeat;
 						 #slidebuy{
 							  height:100%;
+								.swiper-slide{
+                    height:100% !important;
+								}
 						 }
             ul{
 

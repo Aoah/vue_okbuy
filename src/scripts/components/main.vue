@@ -116,9 +116,10 @@
     }
 </style>
 <template>
+
     <div class="main-containter">
         <router-view></router-view>
-
+        <search :msg.sync="searchshow" v-if="searchshow"></search>
         <div class="main-center">
             <div>
                 <div class="main-down">
@@ -155,13 +156,16 @@
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
 
 
 <script>
+ // 插入搜索界面
+ import searchBody from "./search.vue"
+ Vue.component('search',Vue.extend(searchBody));
+
     import { changeIndex   } from "../vuex/actions";
     // import imageLoad from "./utils/commonUtil";
     //     imageLoad.myScroll();
@@ -173,6 +177,7 @@
         },
         data() {
             return {
+              searchshow:false,
                 swiperdic: '',
                 iscroll: {
                     orignImg: '/images/stop.png',
@@ -247,8 +252,8 @@
             this.change(0);
             //检查图片是否完全加载完成
             Vue.nextTick(function() {
-                _this.swiperdic = ".swiper-container";
-            })
+                  _this.swiperdic = ".swiper-container";
+             })
             // 测试 图片预加载的功能
             // imageLoad.isAllLoaded(".swiper-container", function() {
             //

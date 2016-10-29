@@ -14,6 +14,12 @@
             ul {
                 width: .79rem;
                 background: #f5f5f5;
+                .liactive{
+                        background:white;
+                        color:red;
+                        width:.8rem;
+                        border-left: .01rem;
+                  }
                 li {
                     @include flexbox();
                     @include justify-content(center);
@@ -47,6 +53,8 @@
                         @include border-radius(.05rem);
                         p {
                             width: 80%;
+                            overflow:hidden;
+                            font-size:.1rem;
                             text-overflow: ellipsis;
                             text-align: center;
                         }
@@ -77,7 +85,12 @@
                         height:.45rem;
                     }
                     p{
-                        font-size:.14rem;
+                      text-align:center;
+                        font-size:.12rem;
+                        white-space:nowrap;
+                        width:100%;
+                        overflow: hidden;
+                        text-overflow:ellipsis;
 
                     }
                 }

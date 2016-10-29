@@ -16,6 +16,7 @@
     line-height: 1;
     text-align: center;
     // 增加 .yo-ico 这一级用以fix某些浏览器不支持伪元素动画
+    // map-get($loading, content)
     > .yo-ico {
         display: block;
         @include animation(rotate 1s infinite linear);

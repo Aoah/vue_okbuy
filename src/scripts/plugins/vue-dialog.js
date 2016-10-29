@@ -20,10 +20,6 @@ import vuedialog from "./dialog.vue"
 
                // 3。 添加实例方法
                Vue.prototype.$myMethod={
-
                }
-
-
  }
-
  export default vuediglog
