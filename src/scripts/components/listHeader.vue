@@ -1,6 +1,6 @@
 
 
- 
+
 <style>
      header{
       display: flex;
@@ -61,7 +61,7 @@
 
                 </div>
                 <div class="labaMid">
-                <b ></b><i>请输入关键词</i>
+                <b ></b><i @click="changeSearch()">请输入关键词</i>
                 </div>
 
                 <div class="laba labaphoto">
@@ -70,10 +70,27 @@
          </div>
          <div class="black8">
          </div>
-      </header> 
+      </header>
  </template>
 
 <script>
+   export default {
+        data(){
+           return {
+
+           }
+        },
+        props:{
+             msg:{
+                info:false
+             }
+
+        },
+        methods:{
+            changeSearch(){
+                this.msg.info=true
+            }
+        }
+   }
 
 </script>
-

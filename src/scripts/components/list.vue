@@ -1,7 +1,9 @@
 <template>
 <div class="list-containter">
-    <router-view>
+    <router-view :msg.sync="mag">
     </router-view>
+     <search  :msgsearch.sync="mag" v-if="mag.info">
+    </search>
     <loading v-if="loadingFlag">
     </loading>
     <div class="list-middle">
@@ -66,6 +68,9 @@
     export default {
         data(){
             return {
+              mag:{
+                 info:false
+              },
               loadingFlag:true,
               listflag:true,
               listCurrent:0,

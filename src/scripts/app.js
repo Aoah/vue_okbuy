@@ -23,6 +23,10 @@ import shopcarHeader from "./components/shopcarHeader.vue"
 /*******/   imageLoad.mySwiper();
             imageLoad.myScroll();
 
+// 自定义search 组件
+import searchBody from "./components/search.vue"
+          var Mycomponent = Vue.extend(searchBody);
+          Vue.component('search',Mycomponent);
 //import sss from "./components/listTest.vue"
 // import  listcontain  from "./components/listContain.vue";
 // 引入单独定义的路由

@@ -116,10 +116,9 @@
     }
 </style>
 <template>
-
     <div class="main-containter">
-        <router-view></router-view>
-        <search :msg.sync="searchshow" v-if="searchshow"></search>
+        <router-view :mag.sync="msg"></router-view>
+        <search  :msgsearch.sync="msg"  v-if="msg.info"></search>
         <div class="main-center">
             <div>
                 <div class="main-down">
@@ -163,8 +162,7 @@
 
 <script>
  // 插入搜索界面
- import searchBody from "./search.vue"
- Vue.component('search',Vue.extend(searchBody));
+
 
     import { changeIndex   } from "../vuex/actions";
     // import imageLoad from "./utils/commonUtil";
@@ -177,7 +175,10 @@
         },
         data() {
             return {
-              searchshow:false,
+                msg:{
+                    info:false
+                },
+                searchshow:false,
                 swiperdic: '',
                 iscroll: {
                     orignImg: '/images/stop.png',

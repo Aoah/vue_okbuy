@@ -16,7 +16,7 @@
         margin:0 .07rem 0 .13rem;
         background:url("/images/logo.png");
         background-size: 100%;
-   	    
+
    }
    .HR{
    	padding:0 .13rem;
@@ -55,21 +55,38 @@
         </div>
         <div class="HR">
              <img  class="search" src="/images/main-search.png"/>
-            <input type="input" placeholder="搜索你要寻找的商品"/>
+            <input @click="beginSearch()" type="input" placeholder="搜索你要寻找的商品"/>
             <img class="video" src="/images/main-video.png">
         </div>
-    
+
      </header>
- 
+
  </template>
 
-
-
-
 <script >
+      export default {
+            data(){
+                 return {
+
+
+                 }
+            },
+            methods:{
+                beginSearch(){
+                  this.mag.info=true;
+                    console.log(this.mag.info)
+                  //  this.msg=true;
+                }
+            },
+            props:{
+                mag:{
+                      info:true
+                }
+            }
+      }
 		// import Vue from "../libs/vue.js";
 
-		// var MyComponent=Vue.extend({ 
+		// var MyComponent=Vue.extend({
 		// 	  template:'<div>A custom component! </div>'
 		// })
 
