@@ -2303,7 +2303,7 @@ var transition = Object.freeze({
   	defineReactive: defineReactive,
   	set: set,
   	del: del,
-  	hasOwn: hasOwn
+  	hasOwn: hasOwn,
   	isLiteral: isLiteral,
   	isReserved: isReserved,
   	_toString: _toString,
